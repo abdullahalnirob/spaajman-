@@ -31,9 +31,8 @@ const Dashboard = () => {
 
       {/* Sidebar Menu */}
       <div
-        className={`fixed inset-y-0 rounded-2xl left-0 z-50 bg-white w-64 shadow-md p-5 transform ${
-          menuOpen ? 'translate-x-0' : '-translate-x-full'
-        } transition-transform duration-300 md:relative md:translate-x-0`}
+        className={`fixed inset-y-0 rounded-2xl left-0 z-50 bg-white w-64 shadow-md p-5 transform ${menuOpen ? 'translate-x-0' : '-translate-x-full'
+          } transition-transform duration-300 md:relative md:translate-x-0`}
       >
         <h1 className="text-xl md:text-2xl my-4 font-bold text-center md:text-left">Dashboard</h1>
         <ul className="flex flex-col w-full   space-y-4">
@@ -102,6 +101,13 @@ const Dashboard = () => {
                 <Link to="/dashboard/PostedJob">
                   <button className="bg-indigo-600 text-white px-4 py-2 w-full text-left rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300 flex items-center">
                     Posted Job
+                  </button>
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard/appliedJob">
+                  <button className="bg-indigo-600 text-white px-4 py-2 w-full text-left rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300 flex items-center">
+                    Applied Job
                   </button>
                 </Link>
               </li>

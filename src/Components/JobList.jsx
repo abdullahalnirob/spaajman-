@@ -58,7 +58,7 @@ const JobList = () => {
                 Details
               </Link>
               <Link
-                to={`/job/${job._id}/apply`}
+                to={`/jobs/apply/${job._id}`}
                 className="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors duration-300 ease-in-out"
               >
                 Apply Now

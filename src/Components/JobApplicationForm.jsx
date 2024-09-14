@@ -1,22 +1,37 @@
-
-import { useParams } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from "react-router-dom";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import toast from "react-hot-toast";
+
 
 const JobApplicationForm = () => {
-  const { id } = useParams();
+  const { _id, title, email } = useLoaderData();
   const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
+  const axiosCommon = useAxiosPublic();
 
-  const onSubmit = (data) => {
-    // Log the form data to the console
-    console.log({ id, ...data });
+  const onSubmit =async (data) => {
+    try {
+      const applyData = {
+        posterEmail: email,
+        posterId: _id,
+        ...data
+      }
 
-    // Reset form fields after submission
-    reset();
+      // Posting data to the server
+      await axiosCommon.post('/appliedJob', applyData);
+      toast.success('appliedJob successfully!');
+      reset();
+      navigate('/job-search');
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (
     <div className="p-16 pt-28">
-      <h1 className="text-2xl font-bold mb-4">Apply for Job ID: {id}</h1>
+      <h1 className="text-2xl font-bold mb-4">Apply for Job: {title}</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"

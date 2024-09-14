@@ -23,6 +23,7 @@ import Error from '../Error';
 import Profile from '../Dashboard/Profile';
 import AllShopAdmin from '../Dashboard/AllShopAdmin';
 import PostedJob from '../Dashboard/PostedJob';
+import AppliedJob from '../Dashboard/AppliedJob';
 
 export const router = createBrowserRouter([
   {
@@ -68,8 +69,9 @@ export const router = createBrowserRouter([
       }
       ,
       {
-        path: "/job/:id/apply",
-        element: <JobApplicationForm />
+        path: "/jobs/apply/:id",
+        element: <PrivateRouter><JobApplicationForm /></PrivateRouter>,
+        loader: ({ params }) => fetch(`https://spaajman-server.vercel.app/jobs/${params.id}`)
       },
       {
         path: "/gallery",
@@ -118,7 +120,10 @@ export const router = createBrowserRouter([
       {
         path: 'PostedJob',
         element: <PostedJob></PostedJob>
-
+      },
+      {
+        path: 'appliedJob',
+        element: <AppliedJob></AppliedJob>
       }
 
     ]
