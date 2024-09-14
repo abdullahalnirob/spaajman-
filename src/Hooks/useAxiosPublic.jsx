@@ -5,10 +5,10 @@ const axiosPublic = axios.create({
     // baseURL: "https://server-coral-alpha-78.vercel.app"
 
     // Arafat
-    baseURL: "https://spaajman-server.vercel.app"
+    // baseURL: "https://spaajman-server.vercel.app"
 
     // local
-    // baseURL: "http://localhost:5000"
+    baseURL: "http://localhost:5000"
 });
 const useAxiosPublic = () => {
     return axiosPublic;

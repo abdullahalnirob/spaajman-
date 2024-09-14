@@ -7,7 +7,7 @@ import useShop from '../Hooks/useShop';
 import Loading from './Loading/Loading';
 import Slider from './Slider';
 
-const MapComponent = () => {
+const Map = () => {
   const [search, setSearch] = useState('');
   const [filteredShops, setFilteredShops] = useState([]);
   const [selectedShop, setSelectedShop] = useState(null);
@@ -41,18 +41,39 @@ const MapComponent = () => {
 
 
   return (
-    <div className="mt-[70px]">
-      <div className="block md:flex md:flex-row-reverse">
-        <div className="flex-1 h-96 md:h-auto relative">
-        <div className="flex items-center">
+    <div className="">
+      <div className="flex mt-20 flex-col-reverse md:flex-row">
+        <div className="">
+          <div className="">
             <input
               type="text"
               placeholder="Search salons or services..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="px-4 py-3.5 absolute top-6 md:top-10 right-5 z-[10] w-2/3 md:w-1/3 text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300"
+              className="px-4 py-3.5 w-full text-gray-400 font-medium placeholder-gray-400 bg-white outline-none border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300"
             />
           </div>
+
+          <div className="">
+            {data.map((shop) => (
+              <div key={shop._id} className="p-4 bg-gray-100 rounded shadow">
+                <h3 className="font-bold text-lg">{shop.name}</h3>
+                <p className="text-sm text-gray-600">{shop.location}</p>
+                <Link to={`/services/${shop._id}`}>
+                  <button className="mt-2 p-2 bg-indigo-500 text-white rounded">
+                    View Service
+                  </button>
+                </Link>
+              </div>
+            ))}
+          </div>
+
+
+    {/* <Slider/> */}
+
+
+
+        </div>
           <MapContainer
             center={[23.8103, 90.4125]}
             zoom={12}
@@ -70,8 +91,8 @@ const MapComponent = () => {
                   click: () => handleMarkerClick(shop),
                 }}
               >
-                <Popup >
-                  <div className='z-[20px]'>
+                <Popup>
+                  <div>
                     <h3 className="font-bold">{shop.name}</h3>
                     <p className="text-sm">{shop.location}</p>
                     <Link to={`/services/${shop._id}`}>
@@ -87,32 +108,8 @@ const MapComponent = () => {
 
             ))}
           </MapContainer>
-        </div>
-        <Slider />
       </div>
 
-
-            {/* ShopInfo */}
-            <div className="flex flex-col w-full py-20 px-5 md:px-20 bg-white shadow-md rounded-md mb-4 md:mb-0 md:mr-4 z-10 overflow-hidden">
-  <div className="grid grid-cols-1 gap-4 overflow-y-auto max-h-96">
-      {data.map((shop) => (
-        <div key={shop._id} className="p-4 bg-gray-100 rounded shadow">
-          <h3 className="font-bold text-lg">{shop.name}</h3>
-          <p className="text-sm text-gray-600">{shop.location}</p>
-          <Link to={`/services/${shop._id}`}>
-            <button className="mt-2 p-2 bg-indigo-500 text-white rounded">
-              View Service
-            </button>
-          </Link>
-        </div>
-      ))}
-    </div>
-  </div>
-            {/* ShopInfo */}
-
-
-
-      <div className='hidden md:block'>
       {selectedShop && (
         <div className="space-y-4 fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white shadow-lg p-4 rounded-md z-20 w-80">
           <h2 className="text-lg font-semibold">{selectedShop.name}</h2>
@@ -126,9 +123,8 @@ const MapComponent = () => {
           </Link>
         </div>
       )}
-      </div>
     </div>
   );
 };
 
-export default MapComponent;
+export default Map;

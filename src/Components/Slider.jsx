@@ -74,19 +74,12 @@ const Slider = () => {
   }
   return (
     <>
-      <div className=' bg-white h-[100vh] w-full' style={{overflowX:'hidden'}}>
-        <div className='text-center'>
-          <h1  data-aos-duration="1000" data-aos="fade-left" className='text-indigo-600 text-3xl md:text-5xl lg:text-7xl py-9 slider-h1'>A Peaceful Retreat</h1>
-          <p data-aos="fade-up" className='lg:text-xl py-3'>
-            Step into our peaceful retreat and leave the stress of the outside world behind. Spaajman is your personal escape, designed to refresh and revitalize.
-          </p>
-        </div>
-
+      <div className='md:w-[40%] transform -translate-y-10  flex items-center justify-between py-10 md:h-[100vh]' style={{overflowX:'hidden'}}>
         <button
           className=""
           onClick={scrollLeft}
         >
-          <svg className="absolute text-center text-white left-[15px] transform -translate-y-[-145px] p-2 bg-indigo-600 h-[50px] w-[50px]  rounded-full z-10 text-4xl "
+          <svg className="p-2 bg-indigo-600 h-[50px] w-[50px]  rounded-full z-10 text-4xl "
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
             <path d="M3.99982 11.9998L19.9998 11.9998" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M8.99963 17C8.99963 17 3.99968 13.3176 3.99966 12C3.99965 10.6824 8.99966 7 8.99966 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -95,23 +88,21 @@ const Slider = () => {
 
         <div
           ref={scrollRef}
-          className="flex space-x-4 overflow-x-scroll scrollbar-hide px-4"
+          className="flex  space-x-4 overflow-x-scroll scrollbar-hide px-4 relative "
         >
           {
             images.map((img, key) => {
-              return <img onClick={gallery} src={img.img} key={key} className='w-[400px] h-[300px] rounded-md cursor-pointer' />
+              return <img onClick={gallery} src={img.img} key={key} className='w-[500px] h-[300px] md:h-[400px]  rounded-md cursor-pointer' />
             })
           }
         </div>
 
         <button
-          className=""
           onClick={scrollRight}
-        ><svg className='absolute text-center text-white right-[15px] transform -translate-y-[180px] p-2 bg-indigo-600 h-[50px] w-[50px]  rounded-full z-10 text-4xl  ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
+        ><svg className='text-center text-white left-[400px]  p-2 bg-indigo-600 h-[50px] w-[50px]  rounded-full z-10 text-4xl  ' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
             <path d="M20.0001 11.9998L4.00012 11.9998" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M15.0003 17C15.0003 17 20.0002 13.3176 20.0002 12C20.0002 10.6824 15.0002 7 15.0002 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-
         </button>
       </div>
     </>

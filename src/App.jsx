@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div>
       {noHeaderFooter || <Navbar />}
-      <div className='min-h-[calc(100vh-559.2px)] w-[95%] mx-auto'>
+      <div className='min-h-[calc(100vh-559.2px)] mx-2'>
         <Outlet />
       </div>
       <Whatsapp />
