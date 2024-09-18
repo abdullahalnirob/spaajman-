@@ -46,7 +46,7 @@ const JobList = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredJobs?.map((job) => (
-          <div data-aos="fade-up" data-aos-duration="700"  key={job._id} className="border border-gray-300 p-6 rounded-lg shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out overflow-x-hidden">
+          <div key={job._id} className="border border-gray-300 p-6 rounded-lg shadow-lg bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out overflow-x-hidden">
             <h2 className="text-2xl font-semibold mb-2 text-gray-800">{job.title}</h2>
             <p className="text-gray-600 mb-1 text-sm font-medium">{job.location}</p>
             <p className="text-gray-700 mb-4">{job.description}</p>

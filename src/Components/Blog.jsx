@@ -52,7 +52,7 @@ const Blog = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-5">
         {filteredBlogs.map((salonBlog) => (
-          <div data-aos="fade-up" data-aos-duration="700" key={salonBlog._id} className="flex flex-col items-center border rounded-lg shadow-lg p-4 transition-transform duration-300 transform hover:scale-105">
+          <div key={salonBlog._id} className="flex flex-col items-center border rounded-lg shadow-lg p-4 transition-transform duration-300 transform hover:scale-105">
             <img
               src={salonBlog.image}
               alt={salonBlog.title}
